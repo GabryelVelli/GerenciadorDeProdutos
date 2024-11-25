@@ -1,0 +1,10 @@
+CREATE DATABASE CRUD
+USE CRUD
+
+CREATE TABLE Products (
+    Id INT IDENTITY PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    Description NVARCHAR(255)
+);
+select * from Products

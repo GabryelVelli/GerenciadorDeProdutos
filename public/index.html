@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD - Knockout & JQuery</title>
+    <script src="https://unpkg.com/knockout@3.5.1/build/output/knockout-latest.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <h1>Gerenciador De Produtos</h1>
+
+        <!-- Formulário de Adicionar ou Editar Produto -->
+        <form data-bind="submit: editingProduct() ? saveEditedProduct : addProduct">
+            <input type="text" placeholder="Nome: " data-bind="value: newName" required>
+            <input type="number" placeholder="Preço" data-bind="value: newPrice" required>
+            <input type="text" placeholder="Descrição" data-bind="value: newDescription" required>
+            <button type="submit">
+                <span data-bind="text: editingProduct() ? 'Salvar' : 'Adicionar'"></span>
+            </button>
+        </form>
+
+        <!-- Tabela de Produtos -->
+        <table border=1 style="width: 100%; margin-top: 20px;">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: products">
+                <tr>
+                    <td data-bind="text: Name"></td>
+                    <td data-bind="text: Price"></td>
+                    <td data-bind="text: Description"></td>
+                    <td>
+                        <button data-bind="click: function() { $parent.deleteProduct($data) }">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
